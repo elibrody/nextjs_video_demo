@@ -23,7 +23,7 @@ export default function SampleVideo(){
         playsInline>
         <source src="https://download.samplelib.com/mp4/sample-5s.mp4" type="video/mp4" />
       </video>
-      <div><button onClick={() => router.push('/', undefined, {shallow: true})} style={{border: '2px solid black', padding: 15}}>Go Back</button></div>
+      <div style={{padding: 15}}><button onClick={() => router.push('/', undefined, {shallow: true})} style={{border: '2px solid black', padding: 15}}>Go Back</button></div>
     </div>
   );
 }

@@ -7,13 +7,15 @@ function changeURLWithoutRerender(newURL: string) {
 }
 
 export default function Home() {
-  const [showVideo, setShowVideo] = useState(false);
   const router = useRouter();
+  const [_, nextTick] = useState(Date.now());
 
   const handleOpenVideo = useCallback(() => {
-    setShowVideo(true);
     changeURLWithoutRerender('/video');
+    nextTick(Date.now());
   }, []);
+
+  const showVideo = typeof window !== "undefined" && window.location.href.indexOf('/video') !== -1;
 
   return (
     <>
@@ -25,7 +27,7 @@ export default function Home() {
             <button onClick={handleOpenVideo} style={{ border: '2px solid blue', padding: 15 }}>Open Video 1</button>
           </div>
           <div>
-            <button onClick={() => router.push('/video', undefined, {shallow: true})} style={{ border: '2px solid blue', padding: 15 }}>Open Video 2</button>
+            <button onClick={() => router.push('/video', undefined, { shallow: true })} style={{ border: '2px solid blue', padding: 15 }}>Open Video 2</button>
           </div>
         </main>
       }
